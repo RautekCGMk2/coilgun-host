@@ -1,6 +1,3 @@
-[submodule "RautekCoilgunMk2_MCU/libs"]
-	path = RautekCoilgunMk2_MCU/libs
-	url = ../RautekCoilgunMk2_libs/
-[submodule "RautekCoilgunMk2_host/libs"]
-	path = RautekCoilgunMk2_host/libs
-	url = ../RautekCoilgunMk2_libs/
+[submodule "libs"]
+	path = libs
+	url = ../libs/
