@@ -15,17 +15,21 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <string.h>
 
 #include "libs/utils.h"
 #include "libs/pins.h"
 
-#define BUFFER_NEXT_FIRE_DATA() memcpy(nextFire, &(population[popIndex]), SHOT_TIMING_DATA_SIZE)
+#define BUFFER_NEXT_FIRE_DATA() \
+	for (int _i = 0; _i < NUM_STAGES; _i++) \
+		nextFire.data[_i] = population[popIndex].data[_i];
+
 #define STOREFILE_SIZE (sizeof(stage_timing_data_t) * NUM_STAGES * GA_POPULATION_SIZE)
 
 typedef shot_timing_data_t individual_t;
 
 unsigned int lastID;
-shot_timing_data_t* nextFire;
+shot_timing_data_t nextFire;
 int dataFile;
 stage_timing_data_t* storefileRaw;
 individual_t* population;
@@ -78,12 +82,13 @@ int ga_init() {
 			MAP_SHARED, dataFile, 0);
 
 	popIndex = 0;
-//	nextFire = (individual_t*) malloc(SHOT_TIMING_DATA_SIZE);
-//	if (nextFire == NULL) {
-//		SYSLOG_TAG(LOG_ERR, "Failed to allocate memory for nextFire");
-//	}
-//
-//	memcpy(nextFire, (population[popIndex]), SHOT_TIMING_DATA_SIZE);
+	nextFire.data = (stage_timing_data_t*) malloc(sizeof(stage_timing_data_t) * NUM_STAGES);
+	if (nextFire.data == NULL) {
+		SYSLOG_TAG(LOG_CRIT, "Failed to allocate memory for nextFire");
+		return -1;
+	}
+	BUFFER_NEXT_FIRE_DATA();
+
 
 	return 0;
 }
