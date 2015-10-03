@@ -24,9 +24,8 @@
 								<option id="gnu.c.compiler.option.warnings.wconversion.616689617" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.c.compiler.option.warnings.wconversion" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.warnings.nowarn.1595017043" name="Inhibit all warnings (-w)" superClass="gnu.c.compiler.option.warnings.nowarn" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.dialect.flags.497119635" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=gnu99" valueType="string"/>
-								<option id="com.intel.iotdevkit.ide.gnu.c.option.include.paths.1813700802" superClass="com.intel.iotdevkit.ide.gnu.c.option.include.paths" valueType="includePath">
+								<option id="com.intel.iotdevkit.ide.gnu.c.option.include.paths.1813700802" name="Include paths (-I)" superClass="com.intel.iotdevkit.ide.gnu.c.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/mraa"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/libs}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1446660113" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -37,6 +36,7 @@
 							<tool id="com.intel.iotdevkit.ide.tool.gnu.cross.c.linker.4473850" name="Cross GCC Linker" superClass="com.intel.iotdevkit.ide.tool.gnu.cross.c.linker">
 								<option id="com.intel.iotdevkit.ide.gnu.c.option.link.libs.1669872738" name="Libraries" superClass="com.intel.iotdevkit.ide.gnu.c.option.link.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="pthread"/>
+									<listOptionValue builtIn="false" value="config"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1066377100" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -51,7 +51,6 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="libs"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>

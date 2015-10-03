@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <syslog.h>
+#include <libconfig.h>
 
 int main() {
 	/* Setup your example here, code that should run once

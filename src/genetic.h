@@ -8,21 +8,18 @@
 #ifndef GENETIC_H_
 #define GENETIC_H_
 
-#include "timing.h"
-#include "pins.h"
+#include "libs/timing.h"
+#include "libs/pins.h"
 
 #define GA_POPULATION_FILE "/var/lib/rtcgmk2/ga_data"
+#define GA_POPULATION_SIZE 10
 
 /**
  * Initializes the genetic algorithm processing code
  * Specifically read data in from the storefile and start the worker thread
+ * @return Returns 0 on success for non-zero otherwise
  */
-void ga_init();
-
-/**
- * Saves all data to the storefile
- */
-void ga_save_data();
+int ga_init();
 
 /**
  * Returns an array of the timing data used on the MCU to calculate whent to fire each coil
@@ -30,7 +27,7 @@ void ga_save_data();
  * 					and will cause a segfault if it's not
  * @return A unique id dictating which generation this data came from.
  */
-unsigned int ga_get_next_timing(timing_data_t* data);
+unsigned int ga_get_next_timing(shot_timing_data_t* data);
 
 /**
  * Send the final velocity data to the genetic algorithm so it can calculate the next generation
